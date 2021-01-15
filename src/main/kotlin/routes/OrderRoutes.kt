@@ -3,12 +3,13 @@ import io.ktor.http.*
 import io.ktor.request.*
 import io.ktor.response.*
 import io.ktor.routing.*
+import model.Orders
 import model.orderStorage
 
 fun Route.listOrdersRoute() {
     get("/order") {
         if (orderStorage.isNotEmpty()) {
-            call.respond(orderStorage)
+            call.respond(Orders(orderStorage))
         }
     }
 }
